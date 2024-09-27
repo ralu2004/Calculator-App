@@ -1,7 +1,7 @@
 const display = document.getElementById("display");
 const themeLink = document.getElementById("theme");
 const darkTheme = "styles/style_dark.css";
-const lightTheme = "styles/style_light.css"; // Define the light theme
+const lightTheme = "styles/style_light.css";
 
 function appendToDisplay(input) {
     display.value += input;
@@ -14,7 +14,7 @@ function clearDisplay() {
 function calculate() {
     try {
         const result = math.evaluate(display.value);
-        display.value = result.toFixed(2); // Display result with 5 decimal places
+        display.value = result.toFixed(2); 
     } catch (error) {
         display.value = 'Error';
     }
@@ -25,17 +25,16 @@ function changeTheme() {
     const currentTheme = themeLink.getAttribute('href');
 
     if (currentTheme.includes('dark')) {
-        themeLink.setAttribute('href', lightTheme); // Switch to light theme
-        localStorage.setItem('theme', 'light'); // Save theme preference
-        themeIcon.classList.replace('fa-moon', 'fa-sun'); // Change to sun icon
+        themeLink.setAttribute('href', lightTheme);
+        localStorage.setItem('theme', 'light');
+        themeIcon.classList.replace('fa-moon', 'fa-sun'); 
     } else {
-        themeLink.setAttribute('href', darkTheme); // Switch to dark theme
-        localStorage.setItem('theme', 'dark'); // Save theme preference
-        themeIcon.classList.replace('fa-sun', 'fa-moon'); // Change to moon icon
+        themeLink.setAttribute('href', darkTheme); 
+        localStorage.setItem('theme', 'dark');
+        themeIcon.classList.replace('fa-sun', 'fa-moon'); 
     }
 }
 
-// On page load, apply the saved theme
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     const themeIcon = document.getElementById("theme-icon");
@@ -47,6 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         // Default to dark theme if no saved theme is found
         themeLink.setAttribute('href', darkTheme);
-        themeIcon.classList.replace('fa-sun', 'fa-moon'); // Set default icon
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
     }
 });
